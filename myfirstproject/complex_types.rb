@@ -1,3 +1,10 @@
+=begin
+  
+commentblock
+
+=end
+
+
 # Array
 
 friends = Array["a","b","c"] # support diff types
