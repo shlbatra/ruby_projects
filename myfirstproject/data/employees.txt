@@ -1,0 +1,9 @@
+A, Sales
+B, Sales
+C, Customer Service
+D, Quality Assurance
+E, Manager
+F, Accounting
+F, Accounting
+F, Accounting
+F, Accounting
