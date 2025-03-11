@@ -10,4 +10,9 @@ module Snackbar # module allows for grouping related constants and methods, name
   def self.random_snack  # Module method, value of self is Snackbar module
     SNACKS.sample
   end
+
+  def self.menu_items
+    SNACKS.map { |snack| "#{snack.name} for $#{snack.price}" }
+  end
+
 end

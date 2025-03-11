@@ -202,3 +202,72 @@ s.name = "chips"
  
 Snack = Data.define(:name, :price)
 k = Snack.new("pretzels", 2)
+
+
+# Hashes
+
+snacks_eaten = {}
+if snacks_eaten.has_key?("a")
+  snacks_eaten["a"]+=1
+else
+  snacks_eaten["a"]=1
+end
+
+puts snacks_eaten
+
+snacks_eaten1 = Hash.new(0) # by default, all new keys assigned 0
+snacks_eaten1["a"] += 1
+
+puts snacks_eaten1
+
+require_relative("lib/flicks/movie")
+
+movie_1 = Movie.new("aa", 10)
+movie_2 = Movie.new("b", 9)
+movie_3 = Movie.new("c")
+
+movies = [movie_1, movie_2, movie_3]
+
+hits = []
+movies.each do |movie|
+  if movie.rank >= 7
+    hits << movie
+  end
+end
+puts hits
+
+hits = movies.select { |movie| movie.rank >= 7 }
+p hits
+flops = movies.reject { |movie| movie.rank >= 7 }
+p flops
+hits, flops = movies.partition { |movie| movie.rank >= 7 } # cond true, cond false
+p hits
+p flops
+
+titles = []
+# movies.each do |movie|
+#   titles << movie.title
+# end
+#Shortcut of above
+title = movies.map  { |movie| movie .title } # return array of same size
+p title
+
+p movies.map  { |movie| movie.title.length } 
+
+sorted = movies.sort_by { |movie| movie.rank }.reverse
+p sorted
+
+# Read file
+
+File.open("movies.csv") do |file|
+  file.each_line do |line|
+    p line
+  end
+end
+
+# Alternate
+File.readlines("movies.csv", chomp: true).each do |line|
+  title, rank = line.split(",")
+  p title
+  p rank
+end

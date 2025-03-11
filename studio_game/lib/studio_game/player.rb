@@ -1,6 +1,6 @@
 class Player
 
-  attr_reader :health, :name
+  attr_reader :health, :name, :found_treasures
   # attr_accessor :name
   
   def name=(new_name)
@@ -8,16 +8,33 @@ class Player
   end
 
   def score
-    return @health + @name.length
+    return @health + points
   end
 
   def initialize(name, health=100)
     @name = name.capitalize
     @health = health
+    @found_treasures = Hash.new(0)
   end
 
   def to_s() 
-    "I am #{@name.capitalize.strip} with a health of #{@health} and score of #{score}" # endless method
+    "I am #{@name.capitalize.strip} with a health of #{@health}, points of #{points} and score of #{score}" # endless method
+  end
+
+  def self.from_csv(line)  # return class object so need a class method so add self prior to method name
+    name, health = line.split(",")
+    Player.new(name, Integer(health))   # Integer(health) rescue 5 - alternate way
+  rescue ArgumentError
+    puts "Ignored invalid health: #{health}"
+    Player.new(name)
+  end
+
+  def found_treasure(name, points)
+    @found_treasures[name] += points 
+  end
+
+  def points
+    @found_treasures.values.sum
   end
 
   def boost()
