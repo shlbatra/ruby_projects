@@ -1,7 +1,10 @@
-class Movie
+require_relative "rankable"
 
-  attr_reader :title, :rank, :snacks_eaten # instance method title, :title is symbol - one value / object - immutable string
-  attr_writer :title # attr_accessor for both read and write
+class Movie
+  include Rankable
+
+  attr_reader :title, :snacks_eaten # instance method title, :title is symbol - one value / object - immutable string
+  attr_writer :title, :rank # attr_accessor for both read and write
 
   def initialize(title, rank=5)
     @title = title.capitalize
@@ -29,14 +32,6 @@ class Movie
   rescue ArgumentError
     puts "Ignored invalid rank: #{rank}"
     Movie.new(title)
-  end
-
-  def thumbs_up
-    @rank += 1
-  end
-
-  def thumbs_down
-    @rank -= 1
   end
 
   def add_snack(name, price)

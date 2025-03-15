@@ -271,3 +271,8 @@ File.readlines("movies.csv", chomp: true).each do |line|
   p title
   p rank
 end
+
+# Mixin 
+
+p Array.ancestors # Enumerable shared across classes array and hash, similar Kernel mixin shared across Object
+p Hash.ancestors

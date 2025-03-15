@@ -1,6 +1,10 @@
-class Player
+require_relative "playable"
 
-  attr_reader :health, :name, :found_treasures
+class Player
+  include Playable
+
+  attr_reader :name, :found_treasures
+  attr_accessor :health
   # attr_accessor :name
   
   def name=(new_name)
@@ -37,13 +41,6 @@ class Player
     @found_treasures.values.sum
   end
 
-  def boost()
-    @health += 15
-  end
-
-  def drain()
-    @health -= 10
-  end
 end
 
 if __FILE__ == $0

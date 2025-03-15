@@ -1,5 +1,7 @@
 require_relative "lib/studio_game/game"
 require_relative "lib/studio_game/player"
+require_relative "lib/studio_game/clumsy_player"
+require_relative "lib/studio_game/berserk_player"
 
 puts "Let's play a game!"
 puts "🚀" * 25
@@ -48,6 +50,11 @@ game = Game.new("Winner Takes All")
 # game.add_player(player_4)
 players_filename = File.join(__dir__, "players.csv")
 game.load_players(ARGV.shift || players_filename)
+clumsy = ClumsyPlayer.new("klutz", 105, 3)
+game.add_player(clumsy)
+
+berserker = BerserkPlayer.new("berserker", 50)
+game.add_player(berserker)
 
 loop do
 

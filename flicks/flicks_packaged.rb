@@ -1,5 +1,6 @@
 require_relative "lib/flicks/movie"
 require_relative "lib/flicks/playlist"
+require_relative "lib/flicks/movie3d"
 
 movie1 = Movie.new("goonies", 10)
 # puts movie1.inspect
@@ -32,6 +33,9 @@ movies_file = File.join(__dir__, "movies.csv")
 
 playlist_1 = Playlist.new("playlist1")
 playlist_1.load(ARGV.shift || movies_file)  # empty args so gets not pick whats in arguments
+
+movie3d = Movie3D.new("godzilla", 7, 10)
+playlist_1.add_movie(movie3d)
 
 # movies.each do |movie|
 #   playlist_1.add_movie(movie)
