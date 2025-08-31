@@ -1,30 +1,32 @@
 require_relative  "player"
 
-class BerserkPlayer < Player
+module StudioGame
+  class BerserkPlayer < Player
 
-  def initialize(name, health=100)
-    super(name, health)
-    @boost_count = 0
-  end
-
-  def berserk?
-    @boost_count > 5
-  end
-
-  def boost
-    super
-    @boost_count +=1
-      puts "#{@name} is berserk!"  if berserk?
-  end
-
-  def drain()
-    if berserk?
-      boost
-    else
-      super
+    def initialize(name, health=100)
+      super(name, health)
+      @boost_count = 0
     end
-  end
 
+    def berserk?
+      @boost_count > 5
+    end
+
+    def boost
+      super
+      @boost_count +=1
+        puts "#{@name} is berserk!"  if berserk?
+    end
+
+    def drain()
+      if berserk?
+        boost
+      else
+        super
+      end
+    end
+
+  end
 end
 
 if __FILE__ == $0

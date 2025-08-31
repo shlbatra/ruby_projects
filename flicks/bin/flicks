@@ -1,17 +1,16 @@
-require_relative "lib/flicks/movie"
-require_relative "lib/flicks/playlist"
-require_relative "lib/flicks/movie3d"
+#!/usr/bin/env ruby
+require_relative "../lib/flicks/playlist"
 
-movie1 = Movie.new("goonies", 10)
+movie1 = Flicks::Movie.new("goonies", 10)
 # puts movie1.inspect
 # puts movie1
 movie1.thumbs_up
 # puts movie1
 
-movie2 = Movie.new("ghostbusters", 9)
+movie2 = Flicks::Movie.new("ghostbusters", 9)
 # puts movie2.inspect
 
-movie3 = Movie.new("goldfinger")
+movie3 = Flicks::Movie.new("goldfinger", 4)
 # puts movie3.inspect
 # puts movie3
 movie3.thumbs_down
@@ -31,11 +30,11 @@ ARGV[0]  # command line args
 
 movies_file = File.join(__dir__, "movies.csv")
 
-playlist_1 = Playlist.new("playlist1")
+playlist_1 = Flicks::Playlist.new("playlist1")
 playlist_1.load(ARGV.shift || movies_file)  # empty args so gets not pick whats in arguments
 
-movie3d = Movie3D.new("godzilla", 7, 10)
-playlist_1.add_movie(movie3d)
+# movie3d = Flicks::Movie3D.new("godzilla", 7, 10)
+# playlist_1.add_movie(movie3d)
 
 # movies.each do |movie|
 #   playlist_1.add_movie(movie)

@@ -1,6 +1,8 @@
 require_relative "movie"
 
-class Movie3D < Movie # Inherit all instance variables and methods
+
+module Flicks
+  class Movie3D < Movie # Inherit all instance variables and methods
 
   def initialize(title, rank, wow_factor)
     super(title, rank)
@@ -18,12 +20,13 @@ class Movie3D < Movie # Inherit all instance variables and methods
     @wow_factor.times { super } # calls increment 10 times
   end
 
+  end
 end
 
 if __FILE__ == $0
 
-  movie3d = Movie3D.new("godzilla", 7, 10)
-  movie = Movie.new("goonies", 10)
+  movie3d = Flicks::Movie3D.new("godzilla", 7, 10)
+  movie = Flicks::Movie.new("goonies", 10)
 
   puts movie3d.title
   puts movie3d.rank
@@ -34,6 +37,6 @@ if __FILE__ == $0
 
   puts movie3d.show_effect
 
-  puts Movie3D.superclass
-  p Movie3D.ancestors
+  puts Flicks::Movie3D.superclass
+  p Flicks::Movie3D.ancestors
 end

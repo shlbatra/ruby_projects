@@ -1,11 +1,13 @@
-module Rankable # Only deal with rankable things
+module Flicks
+  module Rankable # Only deal with rankable things
 
-  def thumbs_up
-    self.rank += 1 # self instance of class
+    def thumbs_up
+      self.rank += 1 # self instance of class module get mixed into
+    end
+
+    def thumbs_down
+      self.rank -= 1
+    end
+
   end
-
-  def thumbs_down
-    self.rank -= 1
-  end
-
 end

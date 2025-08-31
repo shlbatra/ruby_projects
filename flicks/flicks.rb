@@ -273,6 +273,7 @@ File.readlines("movies.csv", chomp: true).each do |line|
 end
 
 # Mixin 
+# First look in object class, then module included in object class, then in super class
 
 p Array.ancestors # Enumerable shared across classes array and hash, similar Kernel mixin shared across Object
 p Hash.ancestors
